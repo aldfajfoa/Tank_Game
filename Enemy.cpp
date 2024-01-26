@@ -1,5 +1,6 @@
 #include "Enemy.h"
 #include "Engine/Model.h"
+#include "PlayScene.h"
 
 Enemy::Enemy(GameObject* parent)
 	:GameObject(parent,"Enemy"),hModel_(-1)
@@ -25,6 +26,8 @@ void Enemy::Initialize()
 
 	SphereCollider* collision = new SphereCollider({ 0, 0, 0 }, 1.0f);
 	AddCollider(collision);
+
+	en = (PlayScene*)GetParent();
 }
 
 void Enemy::Update()
@@ -57,7 +60,6 @@ void Enemy::OnCollision(GameObject* pTarget)
 	if (pTarget->GetObjectName() == "Bullet") {
 		this->KillMe();
 		pTarget->KillMe();
+		en->Decrease_remaining();
 	}
-
-	en->Decrease_remaining();
 }

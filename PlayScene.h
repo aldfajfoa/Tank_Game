@@ -8,7 +8,6 @@ class PlayScene :
     public GameObject
 {
     int remaining;
-    Text* eText;
     Enemy* p;
     Tank* player;
 public:
@@ -29,6 +28,8 @@ public:
     //ŠJ•ú
     void Release() override;
 
-    void Decrease_remaining() { remaining -= 1; }
+    int Getremaining() { return remaining; }
+
+    void Decrease_remaining() { remaining --; }//“G‚Ì”‚ğŒ¸‚ç‚·
 };
 

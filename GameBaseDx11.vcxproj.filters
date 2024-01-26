@@ -126,6 +126,9 @@
       <Filter>リソース ファイル\PLAY</Filter>
     </ClCompile>
     <ClCompile Include="Enemy.cpp" />
+    <ClCompile Include="HUD.cpp">
+      <Filter>リソース ファイル\PLAY</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine\BoxCollider.h">
@@ -219,6 +222,9 @@
       <Filter>リソース ファイル\PLAY</Filter>
     </ClInclude>
     <ClInclude Include="Enemy.h" />
+    <ClInclude Include="HUD.h">
+      <Filter>リソース ファイル\PLAY</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <FxCompile Include="Assets\Shader\Simple2D.hlsl">

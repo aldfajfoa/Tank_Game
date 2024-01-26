@@ -5,20 +5,11 @@
 #include "Engine/Camera.h"
 #include "Ground.h"
 #include "TankHead.h"
-
-//カメラ制御
-enum CAM_TYPE
-{
-	FIXED_TYPE,//固定
-	TPS_NOROT_TYPE,//三人称回転無し
-	TPS_TYPE,//三人称
-	FPS_TYPE,//一人称
-	MAX_TYPE//番兵さん(チェック用の値)
-};
+#include "PlayScene.h"
 
 Tank::Tank(GameObject* parent)
 	:GameObject(parent, "Tank"), hModel_(-1),
-	speed_(0.1),front_({0,0,1,0}), camState_(CAM_TYPE::FIXED_TYPE)
+	speed_(0.1),front_({0,0,1,0}), camState_(FIXED_TYPE)
 {
 	
 }
@@ -33,9 +24,6 @@ void Tank::Initialize()
 	hModel_ = Model::Load("Model\\TankBody.fbx");
 	assert(hModel_ >= 0);
 	Instantiate<TankHead>(this);
-
-	cText = new Text;
-	cText->Initialize();
 }
 
 void Tank::Update()
@@ -71,9 +59,6 @@ void Tank::Update()
 	pos = pos + dir * move;
 
 	XMStoreFloat3(&(transform_.position_), pos);
-
-	//Debug::Log("angle = ");
-	//Debug::Log(transform_.rotate_.y,true);
 
 	Ground* pGround = (Ground*)FindObject("Ground");
 	int hGmodel = pGround->GetModelHandle();
@@ -141,27 +126,6 @@ void Tank::Draw()
 {
 	Model::SetTransform(hModel_, transform_);
 	Model::Draw(hModel_);
-
-	switch (camState_){
-	case FIXED_TYPE:{
-		cText->Draw(30, 30, "FIXED");
-		break;
-	}
-	case TPS_NOROT_TYPE:{
-		cText->Draw(30, 30, "TPS_NOROT");
-		break;
-	}
-	case TPS_TYPE:{
-		cText->Draw(30, 30, "TPS");
-		break;
-	}
-	case FPS_TYPE:{
-		cText->Draw(30, 30, "FPS");
-		break;
-	}
-	default:
-		break;
-	}
 }
 
 void Tank::Release()

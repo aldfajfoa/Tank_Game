@@ -1,18 +1,22 @@
 #pragma once
 #include "Engine/GameObject.h"
-#include "Ground.h"
+#include "Engine/Text.h"
+#include "Enemy.h"
+#include "Tank.h"
 
 class PlayScene;
 
-class Enemy :
+class HUD :
     public GameObject
 {
-    PlayScene* en;
-    int hModel_;
+    int hPict_;
+    PlayScene* rm;
+    Text* cText;
+    Tank* cam;
 public:
-    Enemy(GameObject* parent);
+    HUD(GameObject* parent);
 
-    ~Enemy();
+    ~HUD();
 
     //‰Šú‰»
     void Initialize() override;
@@ -25,9 +29,5 @@ public:
 
     //ŠJ•ú
     void Release() override;
-
-    //‰½‚©‚É“–‚½‚Á‚½
-   //ˆø”FpTarget “–‚½‚Á‚½‘Šè
-    void OnCollision(GameObject* pTarget) override;
 };
 

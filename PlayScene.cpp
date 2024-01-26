@@ -2,10 +2,11 @@
 #include "Ground.h"
 #include "Tank.h"
 #include "Enemy.h"
+#include "HUD.h"
 #include "Engine/SceneManager.h"
 
 namespace {
-	const int enemyNum_ = 30;
+	const int enemyNum_ = 5;
 }
 
 PlayScene::PlayScene(GameObject* parent)
@@ -23,18 +24,21 @@ void PlayScene::Initialize()
 		p->SetPosition((rand() % 50)-25, 0.5, (rand() % 50)-25);
 	}
 
+	Instantiate<HUD>(this);
+
 	remaining = enemyNum_;
-	eText = new Text;
-	eText->Initialize();
 }
 
 void PlayScene::Update()
 {
+	if (remaining == 0) {
+		SceneManager* pSM = (SceneManager*)(FindObject("SceneManager"));
+		pSM->ChangeScene(SCENE_ID::SCENE_ID_CLEAR);
+	}
 }
 
 void PlayScene::Draw()
 {
-	eText->Draw(30, 65, remaining);
 }
 
 void PlayScene::Release()

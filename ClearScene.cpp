@@ -24,7 +24,7 @@ void ClearScene::Update()
     if (Input::IsMouseButtonDown(0))
     {
         SceneManager* pSM = (SceneManager*)(FindObject("SceneManager"));
-        pSM->ChangeScene(SCENE_ID::SCENE_ID_CLEAR);
+        pSM->ChangeScene(SCENE_ID::SCENE_ID_TITLE);
     }
 }
 
