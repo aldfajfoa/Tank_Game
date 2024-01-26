@@ -18,10 +18,10 @@ void Enemy::Initialize()
 
 	//アニメーションのセット
 	Model::SetAnimFrame(hModel_, 1, 60, 1);
-	float x = (float)rand() / RAND_MAX;//0～1の乱数
+	float x = (float)rand() / RAND_MAX;//乱数
 
 	x = 2.0 * x;
-	float z = (float)rand() / RAND_MAX;//0～1の乱数
+	float z = (float)rand() / RAND_MAX;
 	z = 2.0 * z;
 
 	SphereCollider* collision = new SphereCollider({ 0, 0, 0 }, 1.0f);
