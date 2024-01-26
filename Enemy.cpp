@@ -21,7 +21,7 @@ void Enemy::Initialize()
 	float x = (float)rand() / RAND_MAX;//0`1‚Ì—”
 
 	x = 2.0 * x;
-	float z = (float)rand() / RAND_MAX;
+	float z = (float)rand() / RAND_MAX;//0`1‚Ì—”
 	z = 2.0 * z;
 
 	SphereCollider* collision = new SphereCollider({ 0, 0, 0 }, 1.0f);
